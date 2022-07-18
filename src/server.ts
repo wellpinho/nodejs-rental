@@ -1,17 +1,11 @@
 import express from "express";
 
+import { categoryRoutes } from "./routes/categories.routes";
+
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  return res.status(200).json("Hello World");
-});
-
-app.post("/rentals", (req, res) => {
-  const { name } = req.body;
-
-  return res.status(200).json(name);
-});
+app.use(categoryRoutes);
 
 app.listen(4000, () => console.log("Server running on port 4000"));
